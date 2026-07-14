@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Contacts on Portfolio</title>
+		<link>https://anthonymosleyjr.com/contact/</link>
+		<description>Recent content in Contacts on Portfolio</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 13 Jul 2026 11:21:15 -0400</lastBuildDate>
+		
+			<atom:link href="https://anthonymosleyjr.com/contact/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Contact</title>
+				<link>https://anthonymosleyjr.com/contact/contact/</link>
+				<pubDate>Mon, 13 Jul 2026 11:21:15 -0400</pubDate>
+				<guid>https://anthonymosleyjr.com/contact/contact/</guid>
+				<description>&lt;p&gt;Contact me at &lt;a href=&#34;mailto:amosley220@outlook.com&#34;&gt;amosley220@outlook.com&lt;/a&gt;&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
