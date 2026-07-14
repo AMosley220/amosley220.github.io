@@ -12,12 +12,56 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v7
+          with:
+            submodules: recursive
+            fetch-depth: 0
+            lfs: false
+
+        - name: Setup Pages
+          id: pages
+          uses: actions/configure-pages@v6
+        
+        - name: Setup Hugo
+          uses: peaceiris/actions-hugo@v3
+          with:
+            hugo-version: '0.164.0'
+            extended: true
+
+        - name: Cache restore
+          id: cache-restore
+          uses: actions/cache/restore@v6
+          with:
+            path: ${{ runner.temp }}/.cache/hugo
+            key: hugo-${{ github.run_id }}
+            restore-keys: hugo-
+
+        - name: Build
+          run: hugo build --gc --minify --baseUrl "${{ steps.pages.outputs.base_url }}" ----cacheDir "${{ runner.temp }}/.cache/hugo"
+  
+        - name: Cache save
+          uses: actions/cache/save@v6
+          with:
+            path: ${{ runner.temp }}/.cache/hugo
+            key: ${{ steps.cache-restore.outputs.cache-primary-key }}
+
+        - name: Upload artifact
+          uses: actions/upload-pages-artifact@v5
+          with:
+            include-hidden-files: false
+            path: ./public
+
     deploy:
         runs-on: ubuntu-latest
+        needs: build
         environment:
           name: github-pages
           url: ${{ steps.deployment.outputs.page_url }}
         steps:
-        - name: Deploy to GitHub Pages
-          id: deployment
-          uses: actions/deploy-pages@v5
+          - name: Deploy to GitHub Pages
+            id: deployment
+            uses: actions/deploy-pages@v5
