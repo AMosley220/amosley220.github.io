@@ -41,7 +41,7 @@ jobs:
             restore-keys: hugo-
 
         - name: Build
-          run: hugo build --gc --minify --baseUrl "${{ steps.pages.outputs.base_url }}" --cacheDir "${{ runner.temp }}/.cache/hugo"
+          run: hugo build --gc --minify --baseURL "${{ steps.pages.outputs.base_url }}" --cacheDir "${{ runner.temp }}/.cache/hugo"
   
         - name: Cache save
           uses: actions/cache/save@v6
